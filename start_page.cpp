@@ -74,23 +74,6 @@ void Start_page::on_Upload_file_button_clicked()
                 data.push_back(transaction);
             }
             file.close();
-            for (const auto& transaction : data) {
-                qDebug() << "Time:" << transaction.time
-                         << "PaymentDate:" << transaction.paymentDate
-                         << "CardNumber:" << transaction.cardNumber
-                         << "PaymentStatus:" << transaction.paymentStatus
-                         << "TransactionAmount:" << transaction.transactionAmount
-                         << "TransactionCurrency:" << transaction.transactionCurrency
-                         << "PaymentAmount:" << transaction.paymentAmount
-                         << "PaymentCurrency:" << transaction.paymentCurrency
-                         << "Cashback:" << transaction.cashback
-                         << "Category:" << transaction.category
-                         << "MCC:" << transaction.mcc
-                         << "Description:" << transaction.description
-                         << "Bonuses:" << transaction.bonuses
-                         << "Rounding:" << transaction.rounding
-                         << "RoundedTransactionAmount:" << transaction.roundedTransactionAmount;
-            }
             mainWindow->show();
             this->close();
         }
