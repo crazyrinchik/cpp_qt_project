@@ -18,8 +18,8 @@ public:
 signals:
     void firstWindow();
 
-private slots:
-    void on_Upload_file_button_clicked();
+// private slots:
+//     void on_Upload_file_button_clicked();
 
 private:
     Ui::MainWindow *ui;

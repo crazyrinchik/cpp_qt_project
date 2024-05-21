@@ -1,7 +1,5 @@
 #include "start_page.h"
-
 #include <QApplication>
-
 
 int main(int argc, char *argv[])
 {
