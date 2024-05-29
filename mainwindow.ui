@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>885</width>
-    <height>657</height>
+    <width>621</width>
+    <height>353</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,277 +17,63 @@
    <string notr="true">background-color: rgb(10, 34, 65);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="card_frame">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>211</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="card_label">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>10</y>
-       <width>81</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Card</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="currency_frame">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>300</y>
-      <width>211</width>
-      <height>231</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="currency_label">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>80</y>
-       <width>101</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Курс валют</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="graphs_frame">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>220</y>
-      <width>531</width>
-      <height>311</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="graphs_label">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>120</y>
-       <width>111</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Графики</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="limits_frame">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>120</y>
-      <width>211</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="limits_label">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>30</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Limit</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="cashback_frame">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>210</y>
-      <width>211</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="cashback_label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>81</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Cashback</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="cashback_value">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="income_frame">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>20</y>
-      <width>251</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="income_label">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>60</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Income</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="expenses_frame">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>20</y>
-      <width>251</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="expenses_label">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>50</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Expenses</string>
-     </property>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>885</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFinance_Mater">
-    <property name="title">
-     <string>Finance Master</string>
-    </property>
-    <addaction name="actionExport"/>
-   </widget>
-   <addaction name="menuFinance_Mater"/>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="2">
+     <widget class="QPushButton" name="ExportButton">
+      <property name="text">
+       <string>Export</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="TableViewButton">
+        <property name="text">
+         <string>Table View</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="ListViewButton">
+        <property name="text">
+         <string>List View</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="CashBackButton">
+        <property name="text">
+         <string>CashBack</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="LimitButton">
+        <property name="text">
+         <string>Limit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExport">
