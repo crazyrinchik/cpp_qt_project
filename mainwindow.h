@@ -5,6 +5,12 @@
 #include "start_page.h"
 #include "tableview.h"
 #include <QString>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QMessageBox>
+#include <QSpinBox>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -15,7 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(const QString &filename, QWidget *parent = nullptr);
     ~MainWindow();
 
 signals:
@@ -26,6 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QString filename;
 };
 
 #endif // MAINWINDOW_H
