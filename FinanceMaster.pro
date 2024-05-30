@@ -12,15 +12,22 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    start_page.cpp
+    sortdialog.cpp \
+    start_page.cpp \
+    tableview.cpp
 
 HEADERS += \
     mainwindow.h \
-    start_page.h
+    proxymodel.h \
+    sortdialog.h \
+    start_page.h \
+    tableview.h
 
 FORMS += \
     mainwindow.ui \
-    start_page.ui
+    sortdialog.ui \
+    start_page.ui \
+    tableview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,6 +35,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    resource.qrc
+
+DISTFILES += \
+    _17fc8ee5-7037-4e75-9cf4-348f010e09c0.jpeg
     resource.qrc
 
 DISTFILES += \
