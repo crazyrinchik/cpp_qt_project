@@ -1,9 +1,10 @@
 #include "tableview.h"
 #include "ui_tableview.h"
 
-TableView::TableView(QWidget *parent)
+TableView::TableView(const QString &filename, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::TableView)
+    , filename(filename)
 {
     ui->setupUi(this);
     setupWindow();
@@ -27,7 +28,7 @@ void TableView::setupWindow() {
 void TableView::loadDataset(){
     QStandardItemModel* model = new QStandardItemModel(ui->tableView);
 
-    QFile file("/Users/nikitakalinin/Documents/Project R/bank_operations.csv");
+    QFile file(filename);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream stream(&file);
@@ -129,3 +130,4 @@ void TableView::on_filterButton_clicked()
         ui->tableView->setModel(proxyModel);
     }
 }
+
