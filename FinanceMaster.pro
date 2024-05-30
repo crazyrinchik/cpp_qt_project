@@ -39,7 +39,3 @@ RESOURCES += \
 
 DISTFILES += \
     _17fc8ee5-7037-4e75-9cf4-348f010e09c0.jpeg
-    resource.qrc
-
-DISTFILES += \
-    _17fc8ee5-7037-4e75-9cf4-348f010e09c0.jpeg
