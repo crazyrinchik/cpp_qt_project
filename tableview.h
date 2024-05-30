@@ -20,11 +20,12 @@ class TableView : public QDialog
     Q_OBJECT
 
 public:
-    explicit TableView(QWidget *parent = nullptr);
+    explicit TableView(const QString &filename, QWidget *parent = nullptr);
     ~TableView();
 
 private:
     Ui::TableView *ui;
+    QString filename;
     void loadDataset();
     void setupWindow();
     void SearchInTableView(const QString& searchText);
