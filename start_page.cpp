@@ -44,4 +44,3 @@ void Start_page::on_Upload_file_button_clicked()
     this->close();
 }
 
-
