@@ -12,15 +12,22 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    start_page.cpp
+    sortdialog.cpp \
+    start_page.cpp \
+    tableview.cpp
 
 HEADERS += \
     mainwindow.h \
-    start_page.h
+    proxymodel.h \
+    sortdialog.h \
+    start_page.h \
+    tableview.h
 
 FORMS += \
     mainwindow.ui \
-    start_page.ui
+    sortdialog.ui \
+    start_page.ui \
+    tableview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
