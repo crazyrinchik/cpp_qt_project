@@ -115,7 +115,7 @@ void TableView::on_filterButton_clicked()
     SortDialog sortDialog(this);
     if (sortDialog.exec() == QDialog::Accepted)
     {
-        int selectedFieldIndex = sortDialog.selectedFieldIndex() + 2;
+        int selectedFieldIndex = sortDialog.selectedFieldIndex();
         Qt::SortOrder sortOrder = sortDialog.sortOrder();
 
         QAbstractItemModel* originalModel = ui->tableView->model();
@@ -130,4 +130,5 @@ void TableView::on_filterButton_clicked()
         ui->tableView->setModel(proxyModel);
     }
 }
+
 
