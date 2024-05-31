@@ -38,3 +38,4 @@ Qt::SortOrder SortDialog::sortOrder() const
     else
         return Qt::DescendingOrder;
 }
+
