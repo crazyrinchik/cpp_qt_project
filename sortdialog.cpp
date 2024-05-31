@@ -21,10 +21,12 @@ void SortDialog::setupWindow()
     ui->comboBox->addItem("Operation Date");
     ui->comboBox->addItem("Operation Amount");
     ui->comboBox->addItem("Operation Amount with rounding");
+    ui->comboBox->addItem("Cashback");
     ui->comboBox->addItem("Category");
 
     connect(ui->buttonBox, &QDialogButtonBox::clicked, this, &SortDialog::accept);
 }
+
 
 int SortDialog::selectedFieldIndex() const
 {
