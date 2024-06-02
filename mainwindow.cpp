@@ -153,3 +153,10 @@ void MainWindow::on_exchangeRateButton_clicked()
     rate->show();
 }
 
+void MainWindow::on_analisisButton_clicked()
+{
+    analysisDialog = new AnalysisDialog(filename, this);
+    analysisDialog->exec();
+}
+
+

@@ -6,6 +6,7 @@
 #include "tableview.h"
 #include "listview.h"
 #include "currency_rate.h"
+#include "analysisdialog.h"
 #include "cashback.h"
 #include <QString>
 #include <QWidget>
@@ -47,6 +48,8 @@ private slots:
 
     void on_exchangeRateButton_clicked();
 
+    void on_analisisButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString filename;
@@ -54,7 +57,7 @@ private:
     QChartView *chartView;
     QPieSeries *series;
     CurrencyRate *rate;
-
+    AnalysisDialog *analysisDialog;
 };
 
 #endif // MAINWINDOW_H
