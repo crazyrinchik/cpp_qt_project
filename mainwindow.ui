@@ -117,6 +117,13 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="exchangeRateButton">
+        <property name="text">
+         <string>Exchange rate</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="2" column="2">
@@ -185,4 +192,3 @@ QPushButton:pressed {
  <resources/>
  <connections/>
 </ui>
-
