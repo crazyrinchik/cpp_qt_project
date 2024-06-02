@@ -1,5 +1,6 @@
 #include "listview.h"
 #include "ui_listview.h"
+#include "loggingcategory.h"
 
 ListView::ListView(const QString &filename, QWidget *parent)
     : QDialog(parent)
@@ -11,11 +12,13 @@ ListView::ListView(const QString &filename, QWidget *parent)
     ui->listView->setModel(model);
 
     loadData();
+    qCDebug(application) << "ListView created";
 }
 
 ListView::~ListView()
 {
     delete ui;
+    qCDebug(application) << "ListView destroyed";
 }
 
 void ListView::loadData()
@@ -57,6 +60,7 @@ void ListView::loadData()
     }
 
     file.close();
+    qCDebug(application) << "ListView loaded data";
 
     for (auto it = totalCashback.begin(); it != totalCashback.end(); ++it) {
         QString category = it.key();
@@ -71,5 +75,7 @@ void ListView::loadData()
         QStandardItem *item = new QStandardItem(displayData);
         model->appendRow(item);
     }
+    qCDebug(application) << "ListView cpreprocess and show data";
 }
+
 
