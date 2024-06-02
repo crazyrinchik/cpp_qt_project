@@ -16,6 +16,7 @@ SOURCES += \
     cashback.cpp \
     currency_rate.cpp \
     listview.cpp \
+    loggingcategory.cpp \
     main.cpp \
     mainwindow.cpp \
     sortdialog.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     cashback.h \
     currency_rate.h \
     listview.h \
+    loggingcategory.h \
     mainwindow.h \
     proxymodel.h \
     sortdialog.h \

@@ -1,5 +1,6 @@
 #include "cashback.h"
 #include "ui_cashback.h"
+#include "loggingcategory.h"
 
 
 cashback::cashback(QString &filename, QWidget *parent)
@@ -10,11 +11,13 @@ cashback::cashback(QString &filename, QWidget *parent)
 {
     ui->setupUi(this);
     this->LoadData();
+    qCDebug(application) << "CashbackDialog created";
 }
 
 cashback::~cashback()
 {
     delete ui;
+    qCDebug(application) << "CashbackDialog destroyed";
 }
 
 void cashback::LoadData()
@@ -58,4 +61,5 @@ void cashback::LoadData()
 
     ui->cashback_amount->setText(QString::number(totalCashback));
     this->close();
+    qCDebug(application) << "CashBackDialog loaded data and created";
 }

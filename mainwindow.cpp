@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "loggingcategory.h"
 #include <QtCharts/QChartView>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
@@ -30,11 +31,13 @@ MainWindow::MainWindow(const QString &filename, QWidget *parent)
     ui->chartWidget->setLayout(layout);
 
     updatePieChart();
+    qCDebug(application) << "MainWindow created and ChartWidget added";
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    qCDebug(application) << "MainWindow destroyed";
 }
 
 void MainWindow::on_budgetSpinBox_valueChanged(int value)
@@ -46,6 +49,7 @@ void MainWindow::on_CashBackButton_clicked()
 {
     cashback *cashback_window = new cashback(filename, this);
     cashback_window->show();
+    qCDebug(application) << "CashBack successfully oppened";
 }
 
 
@@ -53,6 +57,7 @@ void MainWindow::on_TableViewButton_clicked()
 {   
     TableView *tableView = new TableView(filename, this);
     tableView->show();
+    qCDebug(application) << "TableView successfully oppened";
 }
 
 
@@ -63,6 +68,7 @@ void MainWindow::on_LimitButton_clicked()
         QMessageBox::critical(this, "Error", "Failed to open file!");
         return;
     }
+    qCDebug(application) << "File successfully is read in limitButton";
 
     QTextStream stream(&file);
     QString headerLine = stream.readLine();
@@ -95,6 +101,7 @@ void MainWindow::on_LimitButton_clicked()
     } else {
         QMessageBox::information(this, "Total spending Amount", QString("Total Spending Amount: %1").arg(totalSpending));
     }
+    qCDebug(application) << "limitButton successfully made its work";
 }
 
 
@@ -102,6 +109,7 @@ void MainWindow::on_ListViewButton_clicked()
 {
     ListView *listView = new ListView(filename, this);
     listView->show();
+    qCDebug(application) << "ListView successfully opened";
 }
 
 
@@ -144,6 +152,7 @@ void MainWindow::updatePieChart()
     for (auto it = expensesByCategory.begin(); it != expensesByCategory.end(); ++it) {
         series->append(it.key(), it.value());
     }
+    qCDebug(application) << "PieChart successfully was created and data were loaded in it";
 }
 
 
@@ -151,12 +160,14 @@ void MainWindow::on_exchangeRateButton_clicked()
 {
     CurrencyRate *rate = new CurrencyRate(this);
     rate->show();
+    qCDebug(application) << "CurrencyWidget added";
 }
+
 
 void MainWindow::on_analisisButton_clicked()
 {
     analysisDialog = new AnalysisDialog(filename, this);
     analysisDialog->exec();
+    qCDebug(application) << "AnalysisButton successfully finished its work";
 }
-
 

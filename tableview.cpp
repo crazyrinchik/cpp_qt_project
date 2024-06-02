@@ -1,5 +1,6 @@
 #include "tableview.h"
 #include "ui_tableview.h"
+#include "loggingcategory.h"
 
 TableView::TableView(const QString &filename, QWidget *parent)
     : QDialog(parent)
@@ -8,11 +9,13 @@ TableView::TableView(const QString &filename, QWidget *parent)
 {
     ui->setupUi(this);
     setupWindow();
+    qCDebug(application) << "TableView created";
 }
 
 TableView::~TableView()
 {
     delete ui;
+    qCDebug(application) << "TableView destroyed";
 }
 
 void TableView::setupWindow() {
@@ -23,6 +26,7 @@ void TableView::setupWindow() {
     connect(ui->lineEdit, &QLineEdit::textChanged, [=](const QString& searchText) {
         SearchInTableView(searchText);
     });
+    qCDebug(application) << "TableView set up window";
 }
 
 void TableView::loadDataset(){
@@ -83,6 +87,7 @@ void TableView::loadDataset(){
     ui->tableView->setModel(model);
 
     ui->tableView->resizeColumnsToContents();
+    qCDebug(application) << "TableView loaded data";
 }
 
 void TableView::SearchInTableView(const QString& searchText)
@@ -108,6 +113,7 @@ void TableView::SearchInTableView(const QString& searchText)
 
         ui->tableView->setRowHidden(row, !match);
     }
+    qCDebug(application) << "TableView search successfully";
 }
 
 void TableView::on_filterButton_clicked()
@@ -129,6 +135,5 @@ void TableView::on_filterButton_clicked()
 
         ui->tableView->setModel(proxyModel);
     }
+    qCDebug(application) << "TableView filtered";
 }
-
-

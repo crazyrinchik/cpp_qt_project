@@ -1,5 +1,6 @@
 #include "analysisdialog.h"
 #include "ui_analysisdialog.h"
+#include "loggingcategory.h"
 #include <QFile>
 #include <QTextStream>
 #include <QDateTime>
@@ -16,11 +17,13 @@ AnalysisDialog::AnalysisDialog(const QString &filename, QWidget *parent) :
     setupChart();
 
     setMinimumSize(800, 600);
+    qCDebug(application) << "AnalysisDialog created";
 }
 
 AnalysisDialog::~AnalysisDialog()
 {
     delete ui;
+    qCDebug(application) << "AnalysisDialog destroyed";
 }
 
 void AnalysisDialog::loadData()
@@ -55,6 +58,7 @@ void AnalysisDialog::loadData()
     for (auto it = weeklyExpenses.begin(); it != weeklyExpenses.end(); ++it) {
         series->append(it.key().startOfDay().toMSecsSinceEpoch(), it.value());
     }
+    qCDebug(application) << "AnalysisDialog loaded data";
 }
 
 void AnalysisDialog::setupChart()
@@ -80,4 +84,6 @@ void AnalysisDialog::setupChart()
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(chartView);
     setLayout(layout);
+
+    qCDebug(application) << "AnalysisDialog set up Chart";
 }

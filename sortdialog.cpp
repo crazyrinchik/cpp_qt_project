@@ -1,5 +1,6 @@
 #include "sortdialog.h"
 #include "ui_sortdialog.h"
+#include "loggingcategory.h"
 
 SortDialog::SortDialog(QWidget *parent)
     : QDialog(parent)
@@ -7,11 +8,13 @@ SortDialog::SortDialog(QWidget *parent)
 {
     ui->setupUi(this);
     setupWindow();
+    qCDebug(application) << "SortDialog created";
 }
 
 SortDialog::~SortDialog()
 {
     delete ui;
+    qCDebug(application) << "SortDialog destroyed";
 }
 
 void SortDialog::setupWindow()
@@ -31,6 +34,7 @@ void SortDialog::setupWindow()
 int SortDialog::selectedFieldIndex() const
 {
     return ui->comboBox->currentIndex();
+    qCDebug(application) << "SortDialog selected the index";
 }
 
 Qt::SortOrder SortDialog::sortOrder() const
@@ -39,5 +43,5 @@ Qt::SortOrder SortDialog::sortOrder() const
         return Qt::AscendingOrder;
     else
         return Qt::DescendingOrder;
+    qCDebug(application) << "SortDialog sorted the data";
 }
-
