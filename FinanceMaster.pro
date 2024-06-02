@@ -12,9 +12,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    analysisdialog.cpp \
     cashback.cpp \
     currency_rate.cpp \
     listview.cpp \
+    loggingcategory.cpp \
     main.cpp \
     mainwindow.cpp \
     sortdialog.cpp \
@@ -22,9 +24,11 @@ SOURCES += \
     tableview.cpp
 
 HEADERS += \
+    analysisdialog.h \
     cashback.h \
     currency_rate.h \
     listview.h \
+    loggingcategory.h \
     mainwindow.h \
     proxymodel.h \
     sortdialog.h \
@@ -32,6 +36,7 @@ HEADERS += \
     tableview.h
 
 FORMS += \
+    analysisdialog.ui \
     cashback.ui \
     currency_rate.ui \
     listview.ui \
