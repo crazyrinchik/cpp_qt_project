@@ -1,0 +1,10 @@
+#ifndef LOGGINGCATEGORY_H
+#define LOGGINGCATEGORY_H
+
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(network)
+Q_DECLARE_LOGGING_CATEGORY(database)
+Q_DECLARE_LOGGING_CATEGORY(application)
+
+#endif // LOGGINGCATEGORY_H
