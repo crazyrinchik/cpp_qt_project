@@ -1,5 +1,6 @@
 #include "start_page.h"
 #include "ui_start_page.h"
+#include "loggingcategory.h"
 
 
 Start_page::Start_page(QWidget *parent)
@@ -13,11 +14,13 @@ Start_page::Start_page(QWidget *parent)
     int height = ui -> image -> height();
 
     ui -> image -> setPixmap(pix.scaled(width, height, Qt::KeepAspectRatio));
+    qCDebug(application) << "StartPage created";
 }
 
 Start_page::~Start_page()
 {
     delete ui;
+    qCDebug(application) << "StartPage destroyed";
 }
 
 void Start_page::on_Upload_file_button_clicked()
@@ -45,5 +48,5 @@ void Start_page::on_Upload_file_button_clicked()
     file.close();
     mainWindow->show();
     this->close();
+    qCDebug(application) << "StartPage load the filepath and closed";
 }
-
