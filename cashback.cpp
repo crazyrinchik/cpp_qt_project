@@ -9,6 +9,7 @@ cashback::cashback(QString &filename, QWidget *parent)
     , totalCashback(0.0)
 {
     ui->setupUi(this);
+    this->LoadData();
 }
 
 cashback::~cashback()
@@ -18,43 +19,39 @@ cashback::~cashback()
 
 void cashback::LoadData()
 {
+
     QFile file(filename);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream stream(&file);
     QString headerLine = stream.readLine();
-    QStringList headers = headerLine.split(',');
-
-    int dateIndex = headers.indexOf("Operation Date");
-    int categoryIndex = headers.indexOf("Category");
-    int cashbackIndex = headers.indexOf("Cashback");
+    QStringList headers = {"Operation Date", "Category", "Cashback"};
 
     ui->tableWidget->setColumnCount(headers.size());
     ui->tableWidget->setHorizontalHeaderLabels(headers);
 
     totalCashback = 0.0;
     int row = 0;
-
     while (!stream.atEnd()) {
         QString line = stream.readLine();
         if (line.isEmpty()) {
             continue;
         }
 
-        QStringList values = line.split(',');
+    QStringList values = line.split(',');
 
-        if (values.size() > cashbackIndex) {
-            ui->tableWidget->insertRow(row);
+        ui->tableWidget->insertRow(row);
 
-            QString date = values.at(dateIndex);
-            QString category = values.at(categoryIndex);
-            double cashback = values.at(cashbackIndex).toDouble();
+        QString date = values.at(0);
+        QString category = values.at(9);
+        double cashback = values.at(8).toDouble();
 
-            ui->tableWidget->setItem(row, dateIndex, new QTableWidgetItem(date));
-            ui->tableWidget->setItem(row, categoryIndex, new QTableWidgetItem(category));
-            ui->tableWidget->setItem(row, cashbackIndex, new QTableWidgetItem(QString::number(cashback)));
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(date));
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(category));
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(QString::number(cashback)));
 
-            totalCashback += cashback;
-            ++row;
-        }
+        totalCashback += cashback;
+        ++row;
+
     }
 
     file.close();

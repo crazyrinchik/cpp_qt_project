@@ -25,12 +25,15 @@ void Start_page::on_Upload_file_button_clicked()
     QString fileName = QFileDialog::getOpenFileName(nullptr,
                                                     QObject::tr("Open File"), "",
                                                     QObject::tr("CSV Files (*.csv)"));
+    fileName = QDir::toNativeSeparators(fileName);
+
     if (fileName.isEmpty()) {
         QMessageBox::critical(this, "Error", "No file selected!");
         return;
     }
 
     QFile file(fileName);
+
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QMessageBox::critical(this, "Error", "Failed to open file!");
         return;

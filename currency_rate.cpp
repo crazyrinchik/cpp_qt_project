@@ -31,7 +31,7 @@ void CurrencyRate::onResult(QNetworkReply *reply)
         QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
 
         QJsonObject root = document.object();
-        ui->textEdit->append("Base currency: " + root.value(root.keys().at(10)).toString());
+        ui->textEdit->append("Base currency: " + root.value("base_code").toString());
         QJsonObject rates = root.value("rates").toObject();
 
         for(auto it = rates.begin(); it != rates.end(); ++it){

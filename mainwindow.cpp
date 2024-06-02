@@ -45,7 +45,6 @@ void MainWindow::on_budgetSpinBox_valueChanged(int value)
 void MainWindow::on_CashBackButton_clicked()
 {
     cashback *cashback_window = new cashback(filename, this);
-    cashback_window->LoadData();
     cashback_window->show();
 }
 
