@@ -12,8 +12,7 @@
 #include <QListView>
 #include <QString>
 #include <QStandardItemModel>
-#include "start_page.h"
-#include "mainwindow.h"
+
 
 
 namespace Ui {

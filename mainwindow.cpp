@@ -8,11 +8,11 @@ MainWindow::MainWindow(const QString &filename, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , filename(filename)
-    , budgetLimit(0)
 {
     ui->setupUi(this);
     setWindowTitle("Finance Master");
     connect(ui->budgetSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &MainWindow::on_budgetSpinBox_valueChanged);
+
 
     series = new QPieSeries();
     chartView = new QChartView();
@@ -44,12 +44,13 @@ void MainWindow::on_budgetSpinBox_valueChanged(int value)
 
 void MainWindow::on_CashBackButton_clicked()
 {
-
+    cashback *cashback_window = new cashback(filename, this);
+    cashback_window->show();
 }
 
 
 void MainWindow::on_TableViewButton_clicked()
-{
+{   
     TableView *tableView = new TableView(filename, this);
     tableView->show();
 }
@@ -103,6 +104,7 @@ void MainWindow::on_ListViewButton_clicked()
     listView->show();
 }
 
+
 void MainWindow::updatePieChart()
 {
     QFile file(filename);
@@ -144,4 +146,10 @@ void MainWindow::updatePieChart()
     }
 }
 
+
+void MainWindow::on_exchangeRateButton_clicked()
+{
+    CurrencyRate *rate = new CurrencyRate(this);
+    rate->show();
+}
 

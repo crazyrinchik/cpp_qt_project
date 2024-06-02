@@ -6,7 +6,6 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
-#include <vector>
 #include "mainwindow.h"
 #include "tableview.h"
 #include <QFileDialog>
@@ -16,7 +15,8 @@
 #include <QPixmap>
 #include <QDate>
 #include <QTime>
-#include <vector>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

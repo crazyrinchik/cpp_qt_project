@@ -5,6 +5,8 @@
 #include "start_page.h"
 #include "tableview.h"
 #include "listview.h"
+#include "currency_rate.h"
+#include "cashback.h"
 #include <QString>
 #include <QWidget>
 #include <QVBoxLayout>
@@ -41,12 +43,18 @@ private slots:
 
     void updatePieChart();
 
+    void on_pushButton_clicked();
+
+    void on_exchangeRateButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString filename;
     int budgetLimit;
     QChartView *chartView;
     QPieSeries *series;
+    CurrencyRate *rate;
+
 };
 
 #endif // MAINWINDOW_H
