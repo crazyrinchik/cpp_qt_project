@@ -1,52 +1,139 @@
-#include "start_page.h"
-#include "ui_start_page.h"
+#include "tableview.h"
+#include "ui_tableview.h"
 #include "loggingcategory.h"
 
-
-Start_page::Start_page(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Start_page)
+TableView::TableView(const QString &filename, QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::TableView)
+    , filename(filename)
 {
     ui->setupUi(this);
-
-    QPixmap pix(":/img/_17fc8ee5-7037-4e75-9cf4-348f010e09c0.jpeg");
-    int width = ui -> image -> width();
-    int height = ui -> image -> height();
-
-    ui -> image -> setPixmap(pix.scaled(width, height, Qt::KeepAspectRatio));
-    qCDebug(application) << "StartPage created";
+    setupWindow();
+    qCDebug(application) << "TableView created";
 }
 
-Start_page::~Start_page()
+TableView::~TableView()
 {
     delete ui;
-    qCDebug(application) << "StartPage destroyed";
+    qCDebug(application) << "TableView destroyed";
 }
 
-void Start_page::on_Upload_file_button_clicked()
+void TableView::setupWindow() {
+    setWindowTitle("Table view");
+
+    loadDataset();
+
+    connect(ui->lineEdit, &QLineEdit::textChanged, [=](const QString& searchText) {
+        SearchInTableView(searchText);
+    });
+    qCDebug(application) << "TableView set up window";
+}
+
+void TableView::loadDataset(){
+    QStandardItemModel* model = new QStandardItemModel(ui->tableView);
+
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream stream(&file);
+
+        if (!stream.atEnd())
+        {
+            QString headerLine = stream.readLine();
+            QStringList headers = headerLine.split(",");
+            model->setHorizontalHeaderLabels(headers);
+        }
+
+        while (!stream.atEnd())
+        {
+            QString line = stream.readLine();
+
+            QStringList fields;
+            QString field;
+            bool inQuotes = false;
+            for (int i = 0; i < line.length(); ++i)
+            {
+                QChar c = line.at(i);
+                if (c == '"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                else if (c == ',' && !inQuotes)
+                {
+                    fields.append(field.trimmed());
+                    field.clear();
+                }
+                else
+                {
+                    field.append(c);
+                }
+            }
+            fields.append(field.trimmed());
+
+            QList<QStandardItem*> items;
+
+            for (const QString& field : fields)
+            {
+                QStandardItem* item = new QStandardItem(field);
+                items.append(item);
+            }
+
+            model->appendRow(items);
+        }
+
+        file.close();
+    }
+
+    ui->tableView->setModel(model);
+
+    ui->tableView->resizeColumnsToContents();
+    qCDebug(application) << "TableView loaded data";
+}
+
+void TableView::SearchInTableView(const QString& searchText)
 {
-    QString fileName = QFileDialog::getOpenFileName(nullptr,
-                                                    QObject::tr("Open File"), "",
-                                                    QObject::tr("CSV Files (*.csv)"));
-    fileName = QDir::toNativeSeparators(fileName);
+    QAbstractItemModel* model = ui->tableView->model();
 
-    if (fileName.isEmpty()) {
-        QMessageBox::critical(this, "Error", "No file selected!");
-        return;
+    QString searchTextLower = searchText.toLower();
+
+    for (int row = 0; row < model->rowCount(); ++row)
+    {
+        bool match = false;
+
+        QModelIndex makeIndex = model->index(row, 11);
+        QModelIndex modelIndex = model->index(row, 9);
+
+        QString make = makeIndex.data(Qt::DisplayRole).toString().toLower();
+        QString model = modelIndex.data(Qt::DisplayRole).toString().toLower();
+
+        if (make.contains(searchTextLower) || model.contains(searchTextLower))
+        {
+            match = true;
+        }
+
+        ui->tableView->setRowHidden(row, !match);
     }
+    qCDebug(application) << "TableView search successfully";
+}
 
-    QFile file(fileName);
+void TableView::on_filterButton_clicked()
+{
+    SortDialog sortDialog(this);
+    if (sortDialog.exec() == QDialog::Accepted)
+    {
+        int selectedFieldIndex = sortDialog.selectedFieldIndex();
+        Qt::SortOrder sortOrder = sortDialog.sortOrder();
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::critical(this, "Error", "Failed to open file!");
-        return;
+        QAbstractItemModel* originalModel = ui->tableView->model();
+
+        ProxyModel* proxyModel = new ProxyModel(this);
+        proxyModel->setSourceModel(originalModel);
+
+        proxyModel->setSortRole(Qt::DisplayRole);
+        proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+        proxyModel->sort(selectedFieldIndex, sortOrder);
+
+        ui->tableView->setModel(proxyModel);
     }
-
-
-    MainWindow *mainWindow = new MainWindow(fileName);
-    connect(mainWindow, &MainWindow::firstWindow, this, &Start_page::show);
-    file.close();
-    mainWindow->show();
-    this->close();
-    qCDebug(application) << "StartPage load the filepath and closed";
+    qCDebug(application) << "TableView filtered";
 }
