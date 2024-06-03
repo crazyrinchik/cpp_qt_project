@@ -1,0 +1,113 @@
+#include <gmock/gmock-matchers.h>
+#include <gtest/gtest.h>
+#include <QApplication>
+#include <QPushButton>
+#include <QSpinBox>
+#include <QMessageBox>
+#include <QSignalSpy>
+#include "mainwindow.h"
+
+// Тест для проверки создания окна
+TEST(MainWindowTest, WindowTitle) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    ASSERT_EQ(mainWindow.windowTitle(), "Finance Master");
+}
+
+// Тест для проверки установки лимита бюджета
+TEST(MainWindowTest, BudgetLimit) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QSignalSpy spy(mainWindow.getBudgetSpinBox(), SIGNAL(valueChanged(int)));
+
+    mainWindow.getBudgetSpinBox()->setValue(5000);
+
+    EXPECT_EQ(spy.count(), 1);
+    EXPECT_EQ(mainWindow.getBudgetSpinBox()->value(), 5000);
+}
+
+// Тест для проверки нажатия кнопки CashBack
+TEST(MainWindowTest, CashBackButton) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QPushButton *button = mainWindow.getCashBackButton();
+
+    QSignalSpy spy(button, &QPushButton::clicked);
+
+    QMetaObject::invokeMethod(button, "click");
+
+    EXPECT_EQ(spy.count(), 1);
+}
+
+// Тест для проверки нажатия кнопки TableView
+TEST(MainWindowTest, TableViewButton) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QPushButton *button = mainWindow.getTableViewButton();
+
+    QSignalSpy spy(button, &QPushButton::clicked);
+
+    QMetaObject::invokeMethod(button, "click");
+
+    EXPECT_EQ(spy.count(), 1);
+}
+
+// Тест для проверки нажатия кнопки Limit
+TEST(MainWindowTest, LimitButton) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QPushButton *button = mainWindow.getLimitButton();
+
+    QSignalSpy spy(button, &QPushButton::clicked);
+
+    QMetaObject::invokeMethod(button, "click");
+
+    EXPECT_EQ(spy.count(), 1);
+}
+
+// Тест для проверки нажатия кнопки ListView
+TEST(MainWindowTest, ListViewButton) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QPushButton *button = mainWindow.getListViewButton();
+
+    QSignalSpy spy(button, &QPushButton::clicked);
+
+    QMetaObject::invokeMethod(button, "click");
+
+    EXPECT_EQ(spy.count(), 1);
+}
+
+// Тест для проверки нажатия кнопки Analysis
+TEST(MainWindowTest, AnalysisButton) {
+    int argc = 0;
+    char **argv = nullptr;
+    QApplication a(argc, argv);
+
+    MainWindow mainWindow("..somepath/bank_operations.csv");
+    QPushButton *button = mainWindow.getAnalysisButton();
+
+    QSignalSpy spy(button, &QPushButton::clicked);
+
+    QMetaObject::invokeMethod(button, "click");
+
+    EXPECT_EQ(spy.count(), 1);
+}
