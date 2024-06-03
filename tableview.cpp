@@ -1,6 +1,7 @@
 #include "tableview.h"
 #include "ui_tableview.h"
 #include "loggingcategory.h"
+#include "sortdialog.h"
 
 TableView::TableView(const QString &filename, QWidget *parent)
     : QDialog(parent)

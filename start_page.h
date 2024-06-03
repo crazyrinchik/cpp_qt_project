@@ -6,9 +6,6 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
-#include "mainwindow.h"
-#include "tableview.h"
-#include <QFileDialog>
 #include <QString>
 #include <QMessageBox>
 #include <QDebug>

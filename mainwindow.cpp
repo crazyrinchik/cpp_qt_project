@@ -171,3 +171,5 @@ void MainWindow::on_analisisButton_clicked()
     qCDebug(application) << "AnalysisButton successfully finished its work";
 }
 
+
+

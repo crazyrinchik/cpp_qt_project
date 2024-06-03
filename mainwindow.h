@@ -2,12 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "start_page.h"
 #include "tableview.h"
 #include "listview.h"
 #include "currency_rate.h"
 #include "analysisdialog.h"
 #include "cashback.h"
+#include "loggingcategory.h"
+#include "proxymodel.h"
+#include "sortdialog.h"
+#include "start_page.h"
 #include <QString>
 #include <QWidget>
 #include <QVBoxLayout>
@@ -43,8 +46,6 @@ private slots:
     void on_ListViewButton_clicked();
 
     void updatePieChart();
-
-    void on_pushButton_clicked();
 
     void on_exchangeRateButton_clicked();
 

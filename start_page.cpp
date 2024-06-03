@@ -1,6 +1,7 @@
 #include "start_page.h"
 #include "ui_start_page.h"
 #include "loggingcategory.h"
+#include "mainwindow.h"
 
 
 Start_page::Start_page(QWidget *parent)

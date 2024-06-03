@@ -2,14 +2,11 @@
 #define TABLEVIEW_H
 
 #include <QDialog>
-#include "start_page.h"
-#include "mainwindow.h"
 #include <QStandardItemModel>
 #include <QFile>
 #include <QMessageBox>
 #include <QSortFilterProxyModel>
-#include "sortdialog.h"
-#include "proxymodel.h"
+
 
 namespace Ui {
 class TableView;
