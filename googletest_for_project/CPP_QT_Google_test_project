@@ -1,0 +1,54 @@
+include(gtest_dependency.pri)
+
+QT += core testlib widgets gui network charts
+
+CONFIG += console
+CONFIG -= app_bundle
+
+TEMPLATE = app
+TARGET = CPP_QT_Google_test_project
+
+INCLUDEPATH += ..somepath/cpp_qt_project-main
+DEPENDPATH += ..somepath/cpp_qt_project-main
+
+SOURCES += \
+        test_main.cpp \
+        tst_test_main.cpp \
+        ..somepath/mainwindow.cpp \
+        ..somepath/analysisdialog.cpp \
+        ..somepath/currencywidget.cpp \
+        ..somepath/listview.cpp \
+        ..somepath/start_page.cpp \
+        ..somepath/tableview.cpp \
+        ..somepath/loggingcategories.cpp \
+        ..somepath/sortdialog.cpp
+
+HEADERS += ..somepath/mainwindow.h \
+        ..somepath/analysisdialog.h \
+        ..somepath/currencywidget.h \
+        ..somepath/listview.h \
+        ..somepath/start_page.h \
+        ..somepath/tableview.h \
+        ..somepath/loggingcategories.h \
+        ..somepath/sortdialog.h \
+        ..somepath/proxymodel.h
+
+
+GTEST_DIR = ..somepath/googletest/googletest
+GMOCK_DIR = ..somepath/googletest/googlemock
+
+INCLUDEPATH += $$GTEST_DIR/include
+INCLUDEPATH += $$GMOCK_DIR/include
+
+LIBS += -L..somepath/googletest/build/lib -lgtest -lgtest_main
+LIBS += -L/..somepath/googletest/build/lib -lgmock -lgmock_main
+
+FORMS += ..somepath/mainwindow.ui \
+        ..somepath/analysisdialog.ui \
+        ..somepath/listview.ui \
+        ..somepath/start_page.ui \
+        ..somepath/tableview.ui \
+        ..somepath/sortdialog.ui
+
+
+RESOURCES += ..somepath/resource.qrc
