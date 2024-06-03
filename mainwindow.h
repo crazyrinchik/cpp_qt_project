@@ -6,6 +6,7 @@
 #include "listview.h"
 #include "currency_rate.h"
 #include "analysisdialog.h"
+#include "ui_mainwindow.h"
 #include "cashback.h"
 #include "loggingcategory.h"
 #include "proxymodel.h"
@@ -32,6 +33,13 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(const QString &filename, QWidget *parent = nullptr);
     ~MainWindow();
+
+    QSpinBox* getBudgetSpinBox() const { return ui->budgetSpinBox; }
+    QPushButton* getCashBackButton() const { return ui->CashBackButton; }
+    QPushButton* getTableViewButton() const { return ui->TableViewButton; }
+    QPushButton* getLimitButton() const { return ui->LimitButton; }
+    QPushButton* getListViewButton() const { return ui->ListViewButton; }
+    QPushButton* getAnalysisButton() const { return ui->analisisButton; }
 
 signals:
     void firstWindow();
