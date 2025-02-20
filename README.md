@@ -1,1 +1,1 @@
-# cpp_qt_project
+Here my group project on qt library is presented. The task was to choose the idea of what we are going to implement and "vizualize" using qt. We decided to create finance assistant that was aimed to help people to take care of their money, incomes and spendings. More detailed description is located at Documentation_cpp_project.pdf file.
